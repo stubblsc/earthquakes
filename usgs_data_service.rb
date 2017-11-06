@@ -3,8 +3,6 @@ require 'csv'
 require 'time'
 
 EQ_DATA_URL = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.csv'
-EQ_DATA_REQUIRED = %i[time latitude longitude mag place]
-EQ_DECIMAL_DATA = %i[latitude longitude mag]
 LA_LAT = 34.0522
 LA_LON = -118.2437
 
@@ -30,11 +28,11 @@ module UsgsDataService
 
   def first_10_felt_by_los_angeles(start_date, end_date)
     earthquake_data.select do |eq|
-        (start_date.to_time..(end_date + 1).to_time - 1).include? eq[:time]
-      end
-      .select{ |eq| eq[:distance_from_la] < eq[:magnitude] * 100 }
-      .sort_by!{ |eq| eq[:time] }
-      .take(10)
+      (start_date.to_time..(end_date + 1).to_time - 1).include? eq[:time]
+    end
+    .select{ |eq| eq[:distance_from_la] < eq[:magnitude] * 100 }
+    .sort_by!{ |eq| eq[:time] }
+    .take(10)
   end
 
   private

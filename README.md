@@ -2,7 +2,7 @@
 
 ### Use the following steps to setup and run the program:
 * Go to directory in terminal
-* Run `chmod +x earthquakes.rb` to change permissions so you cna run the program
+* Run `chmod +x earthquakes.rb` to change permissions so you can run the program
 * Run `./earthquakes.rb  {start_date} {end_date}` to run the program
   * Dates should be in format DD-MM-YYYY
 ### You should receive back a list of hashes with the first 10 earthquakes to
